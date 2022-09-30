@@ -1,11 +1,13 @@
-FROM python:3.8.14-alpine3.16
+FROM python:3.8-alpine
 
-COPY requirements.txt .
+COPY requirements.txt /app/requirements.txt
 
-RUN pip install -r requirements.txt
+RUN pip install -r /app/requirements.txt
 
-COPY . .
+COPY . /app/
 
-RUN crontab crontab
+RUN crontab /app/crontab
 
-CMD ["crond", "-f"]
+RUN touch /tmp/out.log
+
+CMD crond && tail -f /tmp/out.log

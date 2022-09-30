@@ -1,1 +1,1 @@
-0 * * * * python ddns.py
+0,30 * * * * python3 /app/ddns.py >>/tmp/out.log 2>/tmp/err.log

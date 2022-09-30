@@ -1,4 +1,4 @@
-FROM python:3.8.14-apline3.16
+FROM python:3.8.14-alpine3.16
 
 COPY requirements.txt .
 

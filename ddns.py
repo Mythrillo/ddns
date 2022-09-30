@@ -3,13 +3,6 @@ import os
 
 from requests import get
 
-logger = logging.getLogger("ddns")
-logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler("ddns.log")
-file_handler.setLevel(logging.DEBUG)
-logger.addHandler(file_handler)
-
-
 
 def get_ip() -> str:
     try:
@@ -28,5 +21,7 @@ def update_duck_dns_ip(domain: str):
 
 
 if __name__ == "__main__":
+    logger = logging.getLogger()
+    logging.basicConfig(level=logging.INFO)
     domain = os.getenv("DUCK_DOMAIN")
     update_duck_dns_ip(domain)
